@@ -1,0 +1,7 @@
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\Minio.exe
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\Minio.dll
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\Minio.deps.json
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\Minio.runtimeconfig.json
+C:\Project\Minio\obj\Release\net8.0\PubTmp\Out\Minio.pdb

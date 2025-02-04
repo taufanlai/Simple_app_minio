@@ -1,0 +1,16 @@
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.Api.exe
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.Api.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.Api.deps.json
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.Api.runtimeconfig.json
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.Api.pdb
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\CommunityToolkit.HighPerformance.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Minio.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\System.IO.Hashing.dll
+C:\Project\Minio.Api\obj\Release\net8.0\PubTmp\Out\System.Reactive.dll

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\publish\minio\api</_PublishTargetUrl>
+    <History>True|2025-01-30T03:10:09.0151071Z||;True|2025-01-30T10:02:06.3545911+07:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

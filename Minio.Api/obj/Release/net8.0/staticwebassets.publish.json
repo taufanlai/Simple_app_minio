@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "cqWGcyHC5QfGw/0MXkBLK/pNnwSugieE5CUV+G2cZyg=",
+  "Source": "Minio.Api",
+  "BasePath": "_content/Minio.Api",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
