@@ -14,11 +14,11 @@ public class DeleteController : ControllerBase
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteFile([FromQuery] string bucket, [FromQuery] string fileName)
+    public async Task<IActionResult> DeleteFile([FromQuery] string fileName)
     {
         try
         {
-            await _minioService.DeleteFileAsync(bucket, fileName);
+            await _minioService.DeleteFileAsync(fileName);
             return Ok($"File {fileName} deleted successfully.");
         }
         catch (Exception ex)

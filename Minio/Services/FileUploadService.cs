@@ -63,11 +63,11 @@ namespace Minio.Services
             }
         }
 
-        public async Task<Stream> GetFileStreamAsync(string bucketName, string fileName)
+        public async Task<Stream> GetFileStreamAsync(string fileName)
         {
             try
             {
-                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/Download?bucket={bucketName}&fileName={fileName}");
+                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/Download?fileName={fileName}");
 
                 response.EnsureSuccessStatusCode(); // Pastikan response sukses
 
@@ -80,11 +80,11 @@ namespace Minio.Services
             }
         }
 
-        public async Task DeleteFileAsync(string bucketName, string fileName)
+        public async Task DeleteFileAsync(string fileName)
         {
             try
             {
-                var response = await _httpClient.DeleteAsync($"{_apiBaseUrl}/api/Delete?bucket={bucketName}&fileName={fileName}");
+                var response = await _httpClient.DeleteAsync($"{_apiBaseUrl}/api/Delete?fileName={fileName}");
 
                 response.EnsureSuccessStatusCode();
                 Console.WriteLine($"File {fileName} berhasil dihapus.");

@@ -15,12 +15,12 @@ public class GetListController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetListData(string bucket)
+    public async Task<IActionResult> GetListData()
     {
         try
         {
             // Panggil metode service yang mengembalikan daftar file dengan informasi lengkap
-            var fileList = await _minioService.GetFileListAsync(bucket);
+            var fileList = await _minioService.GetFileListAsync();
 
             // Kirim hasil sebagai response
             return Ok(fileList);

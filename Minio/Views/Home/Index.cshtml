@@ -11,6 +11,7 @@
             <input class="form-control" type="file" id="fileInput" required>
         </div>
         <button type="submit" class="btn btn-primary">Upload ke MinIO</button>
+        <button type="button" class="btn btn-secondary" id="refreshButton">Refresh</button>
     </form>
 
     <div class="upload-status mt-4" style="display: none;">
@@ -68,6 +69,10 @@
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/5.0.11/signalr.min.js"></script>
     <script>
+        document.getElementById("refreshButton").addEventListener("click", function() {
+            location.reload();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             reattachDownloadEvents();
         });

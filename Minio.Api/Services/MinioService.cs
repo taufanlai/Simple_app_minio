@@ -67,13 +67,13 @@ namespace Minio.Api.Services
             await _minioClient.PutObjectAsync(putObjectArgs);
         }
 
-        public async Task<List<FileInfo>> GetFileListAsync(string bucketName)
+        public async Task<List<FileInfo>> GetFileListAsync()
         {
             var fileList = new List<FileInfo>();
 
             try
             {
-                var args = new ListObjectsArgs().WithBucket(bucketName);
+                var args = new ListObjectsArgs().WithBucket(_bucketName);
                 var observable = _minioClient.ListObjectsAsync(args);
 
                 // Create a TaskCompletionSource to wait until observable is done
@@ -117,22 +117,35 @@ namespace Minio.Api.Services
         }
 
         // MinioService.cs
-        // MinioService.cs
-        public async Task<Stream> DownloadFileAsync(string bucketName, string fileName)
+        public async Task<Stream> DownloadFileAsync(string fileName)
         {
             try
             {
                 var memoryStream = new MemoryStream();
+                var tcs = new TaskCompletionSource<bool>();
+
                 var args = new GetObjectArgs()
-                    .WithBucket(bucketName)
+                    .WithBucket(_bucketName)
                     .WithObject(fileName)
-                    .WithCallbackStream(async stream =>
+                    .WithCallbackStream(stream =>
                     {
-                        await stream.CopyToAsync(memoryStream);
-                        memoryStream.Seek(0, SeekOrigin.Begin);
+                        try
+                        {
+                            // Salin stream SINKRON ke MemoryStream
+                            stream.CopyTo(memoryStream); // ⚠️ Gunakan CopyTo(), bukan CopyToAsync()
+                            memoryStream.Seek(0, SeekOrigin.Begin);
+                            tcs.SetResult(true); // Tandai operasi selesai
+                        }
+                        catch (Exception ex)
+                        {
+                            tcs.SetException(ex);
+                        }
                     });
 
-                await _minioClient.GetObjectAsync(args);
+                // Jalankan GetObjectAsync dan tunggu callback selesai
+                await _minioClient.GetObjectAsync(args).ConfigureAwait(false);
+                await tcs.Task.ConfigureAwait(false); // ⚠️ Pastikan callback selesai
+
                 return memoryStream;
             }
             catch (Exception ex)
@@ -142,7 +155,7 @@ namespace Minio.Api.Services
             }
         }
 
-        public async Task DeleteFileAsync(string bucketName, string fileName)
+        public async Task DeleteFileAsync(string fileName)
         {
             try
             {

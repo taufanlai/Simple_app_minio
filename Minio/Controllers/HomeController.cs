@@ -115,11 +115,11 @@ namespace Minio.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> DownloadFile(string bucket, string fileName)
+        public async Task<IActionResult> DownloadFile(string fileName)
         {
             try
             {
-                var fileStream = await _uploadService.GetFileStreamAsync(bucket, fileName);
+                var fileStream = await _uploadService.GetFileStreamAsync(fileName);
 
                 if (fileStream == null)
                     return NotFound("File tidak ditemukan.");
@@ -134,11 +134,11 @@ namespace Minio.Controllers
         }
 
         [HttpDelete]
-public async Task<IActionResult> DeleteFile(string bucket, string fileName)
+public async Task<IActionResult> DeleteFile(string fileName)
 {
     try
     {
-        await _uploadService.DeleteFileAsync(bucket, fileName);
+        await _uploadService.DeleteFileAsync(fileName);
         return Ok(new { message = $"File {fileName} berhasil dihapus." });
     }
     catch (Exception ex)
