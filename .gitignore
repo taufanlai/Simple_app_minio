@@ -14,8 +14,10 @@
 *.userprefs
 
 # Build results
-bin/
-obj/
+Minio.Api/bin/
+Minio.Api/obj/
+Minio/bin/
+Minio/obj/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
