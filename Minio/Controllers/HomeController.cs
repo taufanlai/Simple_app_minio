@@ -83,7 +83,7 @@ namespace Minio.Controllers
             try
             {
                 // Ambil daftar file dari MinIO menggunakan FileUploadService
-                var fileList = await _uploadService.GetFileListAsync("bucket01"); // Ganti dengan nama bucket yang sesuai
+                var fileList = await _uploadService.GetFileListAsync(); // Ganti dengan nama bucket yang sesuai
                 return View(fileList);
             }
             catch (Exception ex)

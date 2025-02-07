@@ -37,12 +37,12 @@ namespace Minio.Services
         }
 
         // Metode baru untuk mengambil daftar file dari API
-        public async Task<List<MinioFileInfo>> GetFileListAsync(string bucketName)
+        public async Task<List<MinioFileInfo>> GetFileListAsync()
         {
             try
             {
                 // Panggil API GetListController
-                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/getlist?bucket={bucketName}");
+                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/getlist");
 
                 response.EnsureSuccessStatusCode(); // Pastikan response sukses
 

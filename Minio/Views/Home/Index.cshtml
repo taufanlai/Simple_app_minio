@@ -82,10 +82,9 @@
             document.querySelectorAll('.download-btn').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const fileName = btn.dataset.filename;
-                    const bucket = "bucket01";
 
                     try {
-                        const response = await fetch(`/Home/DownloadFile?bucket=${encodeURIComponent(bucket)}&fileName=${encodeURIComponent(fileName)}`, {
+                        const response = await fetch(`/Home/DownloadFile?fileName=${encodeURIComponent(fileName)}`, {
                             method: 'GET'
                         });
 
@@ -114,12 +113,11 @@
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const fileName = btn.dataset.filename;
-                    const bucket = "bucket01";
 
                     if (!confirm(`Apakah Anda yakin ingin menghapus ${fileName}?`)) return;
 
                     try {
-                        const response = await fetch(`/Home/DeleteFile?bucket=${encodeURIComponent(bucket)}&fileName=${encodeURIComponent(fileName)}`, {
+                        const response = await fetch(`/Home/DeleteFile?fileName=${encodeURIComponent(fileName)}`, {
                             method: 'DELETE'
                         });
 
@@ -127,7 +125,6 @@
                             throw new Error(`Gagal menghapus file: ${response.statusText}`);
                         }
 
-                        alert(`File ${fileName} berhasil dihapus.`);
                         refreshTable();
                     } catch (error) {
                         console.error("Error:", error);
@@ -229,7 +226,6 @@
             }
         });
 
-        // ✅ Perbaikan untuk Progress SignalR
         connection.on("ReceiveUploadProgress", (uploadId, progress) => {
             console.log(`Progress: ${progress}%`);
             const progressBar = document.getElementById('progressBar');
@@ -244,8 +240,5 @@
                 setTimeout(() => location.reload(), 2000);
             }
         });
-
-
     </script>
-
 }
