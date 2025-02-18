@@ -82,14 +82,22 @@
             document.querySelectorAll('.download-btn').forEach(btn => {
                 btn.addEventListener('click', async () => {
                     const fileName = btn.dataset.filename;
+                        console.log('try to download');
+              
+                            window.location.href ="/Home/DownloadFile?fileName=088048aa-335c-4616-8b95-4333261496ba-vs2015.ent_enu.iso";
 
-                    try {
+                    @* try {
+
+                      
                         const response = await fetch(`/Home/DownloadFile?fileName=${encodeURIComponent(fileName)}`, {
                             method: 'GET'
                         });
 
                         if (!response.ok) {
                             throw new Error(`Gagal mengunduh file: ${response.statusText}`);
+                        }
+                        else {
+                            console.log('berhasil download');
                         }
 
                         const blob = await response.blob();
@@ -102,11 +110,11 @@
                         a.click();
 
                         window.URL.revokeObjectURL(url);
-                        document.body.removeChild(a);
+                        document.body.removeChild(a); 
                     } catch (error) {
                         console.error("Error:", error);
                         alert("Terjadi kesalahan saat mengunduh file.");
-                    }
+                    }*@
                 });
             });
 

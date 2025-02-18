@@ -22,13 +22,13 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // CORS Configuration
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowWebApp",
-        policy => policy.WithOrigins("https://localhost:7175")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader());
-});
+// builder.Services.AddCors(options =>
+// {
+//     options.AddPolicy("AllowWebApp",
+//         policy => policy.WithOrigins("https://localhost:7175")
+//                         .AllowAnyMethod()
+//                         .AllowAnyHeader());
+// });
 
 // Registrasi service
 builder.Services.AddControllers();

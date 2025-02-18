@@ -67,7 +67,8 @@ namespace Minio.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/Download?fileName={fileName}");
+                
+                var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/Download2?fileName={fileName}");
 
                 response.EnsureSuccessStatusCode(); // Pastikan response sukses
 
@@ -79,6 +80,14 @@ namespace Minio.Services
                 throw;
             }
         }
+
+        public async Task<HttpResponseMessage > GetFileStream2Async(string fileName)
+        {
+             return await _httpClient.GetAsync($"{_apiBaseUrl}/api/Download2?fileName={fileName}", HttpCompletionOption.ResponseHeadersRead);
+              
+        }
+
+
 
         public async Task DeleteFileAsync(string fileName)
         {

@@ -114,17 +114,52 @@ namespace Minio.Controllers
             return NotFound(new { error = "Upload not found" });
         }
 
-        [HttpGet]
+        // [HttpGet]
+        // public async Task<IActionResult> DownloadFile(string fileName)
+        // {
+        //     try
+        //     {
+        //         var fileStream = await _uploadService.GetFileStreamAsync(fileName);
+
+        //         if (fileStream == null)
+        //             return NotFound("File tidak ditemukan.");
+
+        //         return File(fileStream, "application/octet-stream", fileName);
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         Console.WriteLine($"Error downloading file: {ex.Message}");
+        //         return StatusCode(500, "Terjadi kesalahan saat mengunduh file.");
+        //     }
+        // }
+
+         [HttpGet]
         public async Task<IActionResult> DownloadFile(string fileName)
         {
             try
             {
-                var fileStream = await _uploadService.GetFileStreamAsync(fileName);
+                var response = await _uploadService.GetFileStream2Async(fileName);
 
-                if (fileStream == null)
-                    return NotFound("File tidak ditemukan.");
+                        if (!response.IsSuccessStatusCode)
+                            return NotFound("File tidak ditemukan!");
 
-                return File(fileStream, "application/octet-stream", fileName);
+                        // Ambil Content-Length (jika tersedia)
+                        long? contentLength = response.Content.Headers.ContentLength;
+                        string contentType = response.Content.Headers.ContentType?.ToString() ?? "application/octet-stream";
+
+                        Response.ContentType = contentType;
+                        Response.Headers["Content-Disposition"] = $"attachment; filename={fileName}";
+
+                        if (contentLength.HasValue)
+                            Response.ContentLength = contentLength.Value;
+
+                        // Stream data langsung ke response tanpa buffering di memori
+                        using (Stream apiStream = await response.Content.ReadAsStreamAsync())
+                        {
+                            await apiStream.CopyToAsync(Response.Body);
+                        }
+
+                        return new EmptyResult(); 
             }
             catch (Exception ex)
             {
@@ -132,6 +167,9 @@ namespace Minio.Controllers
                 return StatusCode(500, "Terjadi kesalahan saat mengunduh file.");
             }
         }
+
+
+
 
         [HttpDelete]
 public async Task<IActionResult> DeleteFile(string fileName)
